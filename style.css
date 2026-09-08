@@ -1,0 +1,388 @@
+/* ============================================================
+   Aajke Ki Khabo — "what's cooking today"
+   Design: spice-tin palette. Deep masala brown header, turmeric
+   accent, curry green for veg, chilli red for non-veg/spicy.
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Work+Sans:wght@400;500;600;700&display=swap');
+
+:root {
+  --ink: #241812;
+  --masala: #2E1B12;
+  --masala-light: #4A2F1E;
+  --turmeric: #D9A404;
+  --turmeric-deep: #B8850A;
+  --curry: #4C6B45;
+  --chilli: #A3311F;
+  --rice: #FBF3E2;
+  --rice-card: #FFFDF8;
+  --line: #E4D5B7;
+  --radius: 10px;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--rice);
+  color: var(--ink);
+  font-family: 'Work Sans', sans-serif;
+  line-height: 1.5;
+}
+
+h1, h2, h3, .display {
+  font-family: 'Fraunces', serif;
+  font-weight: 600;
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+button { font-family: inherit; }
+
+a { color: inherit; }
+
+/* ---------- Header ---------- */
+
+.site-header {
+  background: var(--masala);
+  color: var(--rice);
+  padding: 28px 20px 24px;
+}
+
+.site-header .inner {
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.site-header h1 {
+  font-size: clamp(28px, 6vw, 38px);
+  color: var(--rice);
+}
+
+.site-header .tagline {
+  margin-top: 6px;
+  color: #D9C9AE;
+  font-size: 15px;
+}
+
+/* ---------- Mode switch ---------- */
+
+.mode-switch {
+  max-width: 760px;
+  margin: -18px auto 0;
+  padding: 0 20px;
+  position: relative;
+  z-index: 2;
+}
+
+.mode-switch .tabs {
+  display: flex;
+  background: var(--rice-card);
+  border-radius: var(--radius);
+  border: 1px solid var(--line);
+  overflow: hidden;
+  box-shadow: 0 6px 16px rgba(46, 27, 18, 0.15);
+}
+
+.mode-switch button {
+  flex: 1;
+  padding: 14px 10px;
+  border: none;
+  background: transparent;
+  color: var(--masala);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  border-bottom: 3px solid transparent;
+}
+
+.mode-switch button.active {
+  background: #FFF9EC;
+  border-bottom-color: var(--turmeric);
+  color: var(--turmeric-deep);
+}
+
+/* ---------- Main layout ---------- */
+
+main {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 24px 20px 80px;
+}
+
+.panel { display: none; }
+.panel.active { display: block; }
+
+.section-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--masala-light);
+  margin-bottom: 10px;
+}
+
+/* ---------- Ingredient input ---------- */
+
+.ingredient-input-row {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+#ingredient-text {
+  flex: 1;
+  padding: 12px 14px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  font-size: 15px;
+  background: var(--rice-card);
+  color: var(--ink);
+}
+
+#ingredient-text:focus { outline: 2px solid var(--turmeric); outline-offset: 1px; }
+
+.add-btn {
+  padding: 12px 18px;
+  border: none;
+  border-radius: var(--radius);
+  background: var(--curry);
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.add-btn:hover { background: #3d5637; }
+
+.quick-add {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 16px;
+}
+
+.quick-add button {
+  padding: 6px 12px;
+  border-radius: 999px;
+  border: 1px dashed var(--line);
+  background: transparent;
+  color: var(--masala-light);
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.quick-add button:hover { border-color: var(--turmeric-deep); color: var(--turmeric-deep); }
+
+.selected-ingredients {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  min-height: 20px;
+  margin-bottom: 20px;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 10px 6px 14px;
+  background: #EFE2C4;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  font-size: 13px;
+  color: var(--masala);
+}
+
+.chip button {
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: 15px;
+  line-height: 1;
+  color: var(--chilli);
+  padding: 0;
+}
+
+/* ---------- Filters (browse panel) ---------- */
+
+.filter-group { margin-bottom: 18px; }
+
+.filter-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.filter-options button {
+  padding: 8px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: var(--rice-card);
+  color: var(--masala);
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.filter-options button.active {
+  background: var(--masala);
+  color: var(--rice);
+  border-color: var(--masala);
+}
+
+.filter-options button[data-veg="veg"].active { background: var(--curry); border-color: var(--curry); }
+.filter-options button[data-veg="nonveg"].active { background: var(--chilli); border-color: var(--chilli); }
+
+/* ---------- Results ---------- */
+
+.results-meta {
+  font-size: 13px;
+  color: var(--masala-light);
+  margin: 18px 0 10px;
+}
+
+.recipe-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+}
+
+@media (min-width: 560px) {
+  .recipe-grid { grid-template-columns: 1fr 1fr; }
+}
+
+.recipe-card {
+  background: var(--rice-card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 16px;
+  cursor: pointer;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.recipe-card:hover { border-color: var(--turmeric-deep); }
+
+.recipe-card .top-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.recipe-card h3 { font-size: 18px; }
+
+.veg-dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 3px;
+  border: 2px solid var(--curry);
+  flex-shrink: 0;
+  margin-top: 3px;
+  position: relative;
+}
+.veg-dot::after {
+  content: "";
+  position: absolute;
+  inset: 2px;
+  border-radius: 50%;
+  background: var(--curry);
+}
+.veg-dot.nonveg { border-color: var(--chilli); }
+.veg-dot.nonveg::after { background: var(--chilli); clip-path: polygon(50% 0%, 0% 100%, 100% 100%); inset: 1px; }
+
+.recipe-card .meta-line {
+  font-size: 12.5px;
+  color: var(--masala-light);
+}
+
+.tag-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.tag {
+  font-size: 11px;
+  padding: 3px 9px;
+  border-radius: 999px;
+  background: #F1E6CE;
+  color: var(--masala-light);
+}
+
+.tag.match { background: var(--turmeric); color: var(--masala); font-weight: 600; }
+
+.empty-state {
+  text-align: center;
+  padding: 50px 20px;
+  color: var(--masala-light);
+}
+
+.empty-state .display { font-size: 20px; display: block; margin-bottom: 6px; color: var(--masala); }
+
+/* ---------- Recipe detail (modal) ---------- */
+
+.detail-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(36, 24, 18, 0.55);
+  z-index: 20;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.detail-overlay.open { display: block; }
+
+.detail-card {
+  max-width: 620px;
+  margin: 20px auto 40px;
+  background: var(--rice-card);
+  border-radius: 14px;
+  padding: 28px;
+  position: relative;
+}
+
+.detail-card .close-btn {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  border: none;
+  background: var(--rice);
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 16px;
+  color: var(--masala);
+}
+
+.detail-card h2 { font-size: 26px; padding-right: 30px; }
+
+.detail-card .meta-line { margin: 8px 0 16px; color: var(--masala-light); font-size: 13.5px; }
+
+.detail-card h4 {
+  font-family: 'Work Sans', sans-serif;
+  font-size: 13px;
+  text-transform: none;
+  color: var(--turmeric-deep);
+  margin: 22px 0 8px;
+  font-weight: 700;
+}
+
+.detail-card ul, .detail-card ol {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.detail-card li { margin-bottom: 6px; }
+
+.detail-card .ingredient-list li.have { color: var(--curry); font-weight: 600; }
+
+footer {
+  text-align: center;
+  padding: 30px 20px 40px;
+  color: var(--masala-light);
+  font-size: 13px;
+}

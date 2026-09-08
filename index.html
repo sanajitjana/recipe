@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aajke Ki Khabo — what's cooking today?</title>
+<meta name="description" content="Find out what to cook today from what's in your kitchen, or browse by meal, cuisine and mood.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="inner">
+    <h1>Aajke Ki Khabo</h1>
+    <p class="tagline">Tell it what's in your kitchen, or tell it your mood — it'll tell you what's for dinner.</p>
+  </div>
+</header>
+
+<div class="mode-switch">
+  <div class="tabs">
+    <button id="tab-ingredients" class="active" onclick="switchMode('ingredients')">What I have</button>
+    <button id="tab-browse" onclick="switchMode('browse')">Browse by mood/meal</button>
+  </div>
+</div>
+
+<main>
+
+  <!-- PANEL 1: search by ingredients -->
+  <section id="panel-ingredients" class="panel active">
+    <div class="section-label">Add what's in your kitchen right now</div>
+    <div class="ingredient-input-row">
+      <input type="text" id="ingredient-text" placeholder="e.g. potato, onion, paneer..." autocomplete="off">
+      <button class="add-btn" onclick="addIngredientFromInput()">Add</button>
+    </div>
+    <div class="quick-add" id="quick-add"></div>
+    <div class="selected-ingredients" id="selected-ingredients"></div>
+    <div id="ingredient-results"></div>
+  </section>
+
+  <!-- PANEL 2: browse by filters -->
+  <section id="panel-browse" class="panel">
+    <div class="filter-group">
+      <div class="section-label">Meal</div>
+      <div class="filter-options" id="filter-meal"></div>
+    </div>
+    <div class="filter-group">
+      <div class="section-label">Veg or non-veg</div>
+      <div class="filter-options" id="filter-veg"></div>
+    </div>
+    <div class="filter-group">
+      <div class="section-label">Mood</div>
+      <div class="filter-options" id="filter-mood"></div>
+    </div>
+    <div class="filter-group">
+      <div class="section-label">Cuisine</div>
+      <div class="filter-options" id="filter-cuisine"></div>
+    </div>
+    <div id="browse-results"></div>
+  </section>
+
+</main>
+
+<footer>Built for one kitchen, tweak the recipes.js file to make it yours.</footer>
+
+<!-- Recipe detail modal -->
+<div class="detail-overlay" id="detail-overlay" onclick="closeDetailOnOverlay(event)">
+  <div class="detail-card" id="detail-card"></div>
+</div>
+
+<script src="recipes.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
